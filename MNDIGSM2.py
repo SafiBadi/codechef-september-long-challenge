@@ -15,12 +15,12 @@ def converter(result, base, num):
     return result;
 
 for i in range(q):
-    n,l,r = map(int,input().split())
+    n,r = map(int,input().split())
     #print(n,l,r)
     
     min = None
     minbase = None 
-    for j in range(l,r+1):
+    for j in range(2,r+1):
         result = "";
         num = converter(result, j, n)
 
