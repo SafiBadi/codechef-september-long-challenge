@@ -1,42 +1,116 @@
+import math 
+
 q = int(input())
 
-def utility(n):
+def fector(n) :
+    lst1 = []
+    lst2 = []
 
-    if (n >= 0 and n <= 9):
-        return chr(n + ord('0'));
+    for i in range(1, int(math.sqrt(n) + 1)):
+        if (n % i == 0) :
+            temp = n//i
+            if (temp == i) :
+                    lst1.append(i)
+            else :
+                    lst1.append(i)
+                    lst2.append(temp)
+    lst1 += reversed(lst2)
+    return lst1
+
+def unsafe(lst,n,r):
+    traveller = len(lst)-1
+    riski = -1
+    l = 2
+
+    for i in range(len(lst)):
+        if riski == -1 and lst[traveller]<l and traveller != len(lst)-1 and lst[traveller+1] != l :
+            riski = 0
+            traveller -= 1
+            continue
+
+        if lst[traveller] < l or lst[traveller] > r:
+            del lst[traveller]
+        traveller -= 1
+        
+    return riski, lst
+
+def sumofdigits(num,base,minimum):
+    sum = 0
+    if base>num:
+        return num
     else:
-        return chr(n - 10 + ord('A'));
-
-def converter(result, base, num):
-    while (num > 0):
-        result+= utility(num % base);
-        num = int(num / base);
-    result = "".join(reversed(result))
-    return result;
+        while num>0:
+            sum += num%base
+            num = num//base
+            if sum>minimum:
+                break
+    return sum
 
 for i in range(q):
     n,r = map(int,input().split())
-    #print(n,l,r)
     
-    min = None
-    minbase = None 
-    for j in range(2,r+1):
-        result = "";
-        num = converter(result, j, n)
+    minimum = 1e20
+    min2 = 1e20
 
-        sum = 0
-        for i in num:
-            sum += int(i)
-        #print(num)
-        #print(sum)
+    # in n is present in range of l and r, min sum = 1 and min base = n
+    if 2<=n and n<=r:
+        print(n)
+        continue
 
-        if min is None:
-            min = sum
-            minbase = j
-        else:
-            if sum<min:
-                min = sum
-                minbase = j
+    lst = fector(n)
+    riski, lst = unsafe(lst,n,r)
+
+    if len(lst) == 0:
+        for base in range(2,min(r+1,n+1)):
+            sum = sumofdigits(n,base,minimum)           
+            if sum<minimum:
+                minimum = sum
+                minbase = base
+            if minimum == 1:
+                break
+
+        if r+1 > n:
+            if n < minimum:
+                minimum = n
+                tempminbase = n+1
+
+    
+    else:
+        for base in lst: #  for base in lst[1:]
+            sum = sumofdigits(n,base,minimum)         
+            if sum<minimum:
+                minimum = sum
+                minbase = base
+            if minimum == 1:
+                break
+        
+        sum = sumofdigits(n,lst[0],minimum)
+        if sum<minimum:
+            if riski != 0:
+                minimum = sum
+                minbase = lst[0]
+
+            else:
+                tempmin = 1e20
+                tempminbase = -1
+                
+                for base in range( 2,min(n+1,lst[1]) ):
+                    tempsum = sumofdigits(n,base,tempmin)           
+                    if tempsum<tempmin:
+                        tempmin = tempsum
+                        tempminbase = base
+                    if tempmin == 1:
+                        break
+
+                if lst[1] > n:
+                    if n < tempmin:
+                        tempmin = n
+                        tempminbase = n+1
+                
+                if tempmin < minimum:
+                    minimum = tempmin
+                    minbase = tempminbase
+                               
     print(minbase)
 
 
