@@ -1,12 +1,10 @@
-
-number  = 21
+number  = 246821571331
 sum = 0
 
 for base in range(2,number+100):
     num = number
     sum = 0
     
-
     while num>0:
         sum += num%base
         num = num//base
