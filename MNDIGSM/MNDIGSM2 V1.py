@@ -61,7 +61,7 @@ for i in range(q):
     riski, lst = unsafe(lst,n,r)
 
     if len(lst) == 0:
-        for base in range(2,min(r+1,n+1)):
+        for base in range(2,min(n+1,r+1)):
             sum = sumofdigits(n,base,minimum)           
             if sum<minimum:
                 minimum = sum
@@ -76,7 +76,7 @@ for i in range(q):
 
     
     else:
-        for base in lst: #  for base in lst[1:]
+        for base in lst[1:]: #  for base in lst
             sum = sumofdigits(n,base,minimum)         
             if sum<minimum:
                 minimum = sum

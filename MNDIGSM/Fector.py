@@ -17,25 +17,26 @@ def fector(n) :
 
 def unsafe(lst,n,l,r):
     traveller = len(lst)-1
-    riski = -1
+    risk = False
 
     for i in range(len(lst)):
-        if riski == -1 and lst[traveller]<l and traveller != len(lst)-1 and lst[traveller+1] != l :
-            riski = 0
-            traveller -= 1
-            continue
+        if risk == False and lst[traveller]<l and traveller != len(lst)-1 and lst[traveller+1] != l : # last comparison is l not 1
+            risk = lst[traveller]
 
         if lst[traveller] < l or lst[traveller] > r:
             del lst[traveller]
         traveller -= 1
-        
-    return riski, lst
+
+    if len(lst) == 0:
+        risk = True
+
+    return risk, lst
 
     
 
-n = 246821571331
-l = 2100565645
-r = 235448989889
+n = 53785642478243
+l = 55
+r = 84745645656565
 
 a1 = fector(n)
 print(a1)
