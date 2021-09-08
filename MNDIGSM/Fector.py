@@ -34,7 +34,7 @@ def unsafe(lst,n,l,r):
 
     
 
-n = 53785642478243
+n = 321554631//3
 l = 55
 r = 84745645656565
 
@@ -42,7 +42,7 @@ a1 = fector(n)
 print(a1)
 
 riski, lst = unsafe(a1,n,l,r)
-print(riski)
-print(lst)
+#print(riski)
+#print(lst)
 
  

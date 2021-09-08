@@ -1,7 +1,7 @@
-n = 787989554645
+n =r = 3
 
 l = 2
-r = 7879895
+#r = 7879895
 
 previoumin = 1e20
 
@@ -20,14 +20,14 @@ for base in range(l,r):
         sum += num%base
         num = num//base
 
-    if sum>previoussum and  n%(base-1) != 0:
-        lastbreakout = base-1
+    #if sum>previoussum and  n%(base-1) != 0:
+        #lastbreakout = base-1
 
     if sum<miniimum:
         miniimum = sum
         minbase = base
 
-    print(n,"\t",base,"\t",n%base,"\t",sum,"\t",miniimum,minbase)
+    print(n,"\t",base,"\t",n%base,"\t",sum,"\t\t",miniimum,"\t",minbase)
 
     #if n % (base-1) == 0 and base<chamatkar+1:
         #checker = (base -1)*2   
@@ -49,9 +49,9 @@ for base in range(l,r):
     else:
         checker = n % (base-1)
 
-    #if checker != sum:
-        #print("Observation is wrong :",checker)
-        #break
+if checker != sum:
+    print("Observation is wrong :",checker)
+    break
 
     #if sum<8:
         #break
