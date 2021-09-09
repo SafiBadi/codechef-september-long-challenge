@@ -51,12 +51,12 @@ for i in range(q):
     minbase = -1
 
     # in n is present in range of l and r, min sum = 1 and min base = n
-    if l<=n and n<=r:
+    if n>=l and n<=r:
         print(n)
         continue
 
     # if l and r both greater than n, min sum = n and min base = anu of l,l+1....r
-    if l>n and r>n:
+    if l>n:
         print(l)
         continue
 

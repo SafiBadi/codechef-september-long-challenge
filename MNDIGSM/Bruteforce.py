@@ -1,4 +1,4 @@
-n =r = 3
+n =r = 500
 
 l = 2
 #r = 7879895
@@ -49,9 +49,9 @@ for base in range(l,r):
     else:
         checker = n % (base-1)
 
-if checker != sum:
-    print("Observation is wrong :",checker)
-    break
+    if checker != sum:
+        print("Observation is wrong :",checker)
+        #break
 
     #if sum<8:
         #break
