@@ -1,17 +1,9 @@
-n =r = 500
+n = 987654321
+l = 153
+r = 1000
 
-l = 2
-#r = 7879895
-
-previoumin = 1e20
-
-sum = 0
-previoussum = 1e20
-
-lastbreakout = 0
-miniimum = 1e20
-minbase = 0
-
+minimum = 1e20
+minbase  =-1
 for base in range(l,r):
     num = n
     sum = 0
@@ -20,42 +12,8 @@ for base in range(l,r):
         sum += num%base
         num = num//base
 
-    #if sum>previoussum and  n%(base-1) != 0:
-        #lastbreakout = base-1
 
-    if sum<miniimum:
-        miniimum = sum
-        minbase = base
-
-    print(n,"\t",base,"\t",n%base,"\t",sum,"\t\t",miniimum,"\t",minbase)
-
-    #if n % (base-1) == 0 and base<chamatkar+1:
-        #checker = (base -1)*2   
-
-    #elif  n % (base-1) == 0 and base>=chamatkar:
-        #checker = base -1    
-
-    #elif n % (base) > n % (base-1):
-        #checker = (base -1 ) + n % (base-1)
-
-    #elif n % (base) < n % (base-1) and base<chamatkar:
-        #checker = (base -1 ) + n % (base-1)
-
-    #else:
-        #checker = n % (base-1)
-
-    if (n % (base) ) >= (n % (base-1) ):
-        checker = (base -1 ) + n % (base-1)
-    else:
-        checker = n % (base-1)
-
-    if checker != sum:
-        print("Observation is wrong :",checker)
-        #break
-
-    #if sum<8:
-        #break
+    print(n,base,"\t",n%base,"\t",sum)
 
 
-    previoussum = sum
     

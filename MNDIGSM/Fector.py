@@ -4,7 +4,7 @@ def fector(n) :
     lst1 = []
     lst2 = []
 
-    for i in range(1, int(math.sqrt(n) + 1)):
+    for i in range(1, int(math.sqrt(n)+1)):
         if (n % i == 0) :
             temp = n//i
             if (temp == i) :
@@ -34,15 +34,15 @@ def unsafe(lst,n,l,r):
 
     
 
-n = 500
+n = 987654321
 l = 55
-r = 84745645656565
+r = 98765432
 
 a1 = fector(n)
 print(a1)
 
 riski, lst = unsafe(a1,n,l,r)
-#print(riski)
-#print(lst)
+print(riski)
+print(lst)
 
  

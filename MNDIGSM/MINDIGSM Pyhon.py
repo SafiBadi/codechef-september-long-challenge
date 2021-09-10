@@ -16,17 +16,18 @@ for i in range(q):
         print(l)
         continue
 
-    while (l<r and (n//r) <r):
+    while (l<r and ((n//r) <r)):
         digit1 = n//r
         digit2 = n%r
 
-        if minimum > digit1 + digit2:
-            minimum = digit1 + digit2
+        sum = digit1 + digit2
+        if sum < minimum:
+            minimum = sum
             minbase = r
             if minimum == 1:
                 break
 
-        r = n // (digit1 + 1)
+        r = n//(digit1+1)
 
     if minimum > 1:
         for base in range(l,int(r+1)):
@@ -54,3 +55,8 @@ for i in range(q):
 
 
 
+'''
+1   
+987654321 55 46876
+
+'''
