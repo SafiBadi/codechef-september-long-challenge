@@ -1,4 +1,3 @@
-for i in range(5):
-    print(i)
+a = -2.2
 
-print(i)
+print(abs(a))
