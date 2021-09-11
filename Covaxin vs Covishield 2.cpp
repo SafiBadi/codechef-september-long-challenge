@@ -1,3 +1,5 @@
+//WA
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -31,17 +33,24 @@ void sulution()
         count = 0;
         while(faster < slower && money>0)
         {
-            count++;
-            money -= faster;
-            faster += fr;
+            if (money - faster >= 0)
+            {
+                count++;
+                money -= faster;
+                faster += fr;
+            }
+            else
+            {
+                break;
+            }
         }
        
-        if (money > 0)
+        if (money >= faster || money>= slower)
         {
             while (1)
             {
-                jump = ( (faster*sr) +  ( ( (sr-1)*(sr-1+1) ) / 2 ) ) +
-                       ( (slower*fr) +  ( ( (fr-1)*(fr-1+1) ) / 2 ) );
+                jump = ( (faster*sr) +  ( ( (sr-1)*(sr-1+1) ) / 2 ) * fr) +
+                       ( (slower*fr) +  ( ( (fr-1)*(fr-1+1) ) / 2 ) * sr);
                    
                 if ( (money - jump) >=0 )
                 {
@@ -58,10 +67,10 @@ void sulution()
             
         }
         
-        if (money>0)
+        if (money >= faster || money>= slower)
         {
             while (1)
-            {
+            {   
                 if (slower < faster)
                 {
                     if ( (money - slower) >= 0  )

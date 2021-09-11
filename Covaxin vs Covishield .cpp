@@ -1,3 +1,5 @@
+//TLE
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,18 +22,31 @@ void sulution()
         {
             if (covaxine<covishield)
             {
-                money -= covaxine;
-                count++;
-                covaxine += b;
+                if (money - covaxine >= 0)
+                {
+                    money -= covaxine;
+                    count++;
+                    covaxine += b;
+                }
+                else
+                {
+                    break;
+                }
             }
             else
             {
-                money -= covishield;
-                count++;
-                covishield += d;
+                if (money - covishield >= 0)
+                {
+                    money -= covishield;
+                    count++;
+                    covishield += d;
+                }
+                else
+                {
+                    break;
+                }
             }
         }
-        count --;
         printf("%lld \n",count);
         
         temp = count*t;
@@ -40,6 +55,7 @@ void sulution()
         b = ( (b + temp) % m ) + q;
         c = ( (c + temp) % m ) + r;
         d = ( (d + temp) % m ) + s;
+        
     }
 };
 
